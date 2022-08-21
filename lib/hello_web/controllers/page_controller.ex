@@ -2,8 +2,10 @@ defmodule HelloWeb.PageController do
   use HelloWeb, :controller
 
   def index(conn, _params) do
-    conn
-    |> put_root_layout(false)
-    |> render("index.html")
+    redirect(conn, to: Routes.page_path(conn, :redirect_test))
+  end
+
+  def redirect_test(conn, _params) do
+    render(conn, :index)
   end
 end
